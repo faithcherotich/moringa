@@ -1,103 +1,135 @@
 
-/* General header styling */
 .header {
-    display: flex;
-    justify-content: space-between;  /* Distribute space between elements */
-    align-items: center;
-    background-color:#D2F7C6;  /* Greenish background color for the header */
-    padding: 20px;
-    position: relative;  /* For absolute positioning of the bell and user icons */
-    color: white;
+  display: flex;
+  justify-content: space-between;  /* Distribute space between elements */
+  align-items: center;
+  background-color: #D2F7C6;  /* Greenish background color for the header */
+  padding: 20px;
+  position: relative;  /* For positioning the icons and buttons */
+  color: white;
+}
+
+/* Logo container on the left */
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  width: 120px;  /* Adjust width as needed */
+
+}
+
+/* Navbar links */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D2F7C6; /* Greenish background for navbar */
+  padding: 10px;
+  width: 100%;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;  /* Add spacing between items */
+}
+
+.navbar li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.navbar li a:hover {
+  color: #ff6347;  /* Change color on hover */
+}
+
+/* Icons container (bell, bookmark, user icon) */
+.icons-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;  /* Space between the icons */
+  z-index: 10;  /* Ensure icons are on top */
+  position: absolute; /* Keep icons on the top-right */
+  right: 20px;
+  top: 20px;  /* Adjust if necessary */
+}
+
+/* Individual icon styling */
+.bell-icon,
+.bookmark-icon,
+.user-icon {
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
+
+/* Profile button styling */
+.create-profile-btn {
+  background-color: #4CAF50;  /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  z-index: 10;  /* Ensure button is clickable */
+  position: relative;
+  margin-top: 30px;  /* Space between navbar and button */
+  margin-left: auto;
+  margin-right: auto;  /* Center the button horizontally */
+}
+
+/* Button hover effect */
+.create-profile-btn:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    display: none; /* Hide the navbar on small screens */
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  /* Logo container on the left */
-  .logo-container {
-    flex: 1;
+
+  .navbar.active {
+    display: flex; /* Show navbar when active */
   }
-  
-  /* Styling for the logo */
-  .logo {
-    max-width: 100%;
-    height: auto;
-    width: 120px;  /* Adjust width as needed */
-  }
-  
-  /* Icons container for bell, bookmark, and user icon */
-  .icons-container {
-    position: absolute;
-    right: 20px;  /* Position the icons 20px from the right edge */
-    top: 20px;  /* Align vertically with the navbar */
-    display: flex;
-    gap: 15px;  /* Space between the icons */
-  }
-  
-  /* Individual icon styling (bell, bookmark, user, etc.) */
-  .bell-icon,
-  .bookmark-icon,
-  .user-icon {
-    font-size: 30px;
-    color: white;
+
+  .hamburger {
+    display: block;
     cursor: pointer;
   }
-  
-  /* Navbar styling (greenish background) */
-  .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#D2F7C6;  /* Greenish background for the navbar */
-    padding: 10px;
-    width: 100%;
+
+  .hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
   }
-  
-  /* Styling for the navbar links */
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;  /* Add spacing between items */
-  }
-  
-  .navbar li {
-    display: inline-block;
-  }
-  
-  .navbar li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .navbar li a:hover {
-    color: #ff6347;  /* Change color on hover */
-  }
-  
-  /* Hamburger icon for mobile */
-  .hamburger {
-    display: none;
-  }
-  
-  /* Mobile responsive design */
-  @media (max-width: 768px) {
-    .navbar {
-      display: none; /* Hide the navbar on small screens */
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .navbar.active {
-      display: flex; /* Show navbar when active */
-    }
-  
-    .hamburger {
-      display: block;
-      cursor: pointer;
-    }
-  
-    .hamburger .bar {
-      display: block;
-      width: 25px;
-      height: 3px;
-      margin: 5px auto;
-      background-color: white;
-    }
-  }
+}
+.user-info {
+  position: absolute;
+  top: 80px; /* Position below the header */
+  right: 20px; /* Align to the right side */
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 5px 0;
+}
+
+.user-info p strong {
+  color: #333;
+}

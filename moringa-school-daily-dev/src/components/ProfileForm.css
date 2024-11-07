@@ -1,73 +1,96 @@
+/* Profile form layout */
 .profile-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header */
-  .profile-form h3 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Label styling */
-  .profile-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
-  }
-  
-  /* Input and textarea styling */
-  .profile-form input,
-  .profile-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  
-  /* Textarea has different height */
-  .profile-form textarea {
-    height: 120px;
-    resize: vertical; /* Allows vertical resizing */
-  }
-  
-  /* Button styling */
-  .profile-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  .profile-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Success and error message styling */
-  .success-message {
-    color: green;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 20px;
-  }
+  max-width: 600px; /* Limit the width of the form */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 30px; /* Add padding inside the form */
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+.profile-form h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Label styling */
+.profile-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input and textarea styling */
+.profile-form input,
+.profile-form textarea {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding inside the inputs */
+  margin-bottom: 15px; /* Space between form elements */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  font-size: 16px; /* Consistent font size */
+}
+
+/* Textarea height */
+.profile-form textarea {
+  height: 120px; /* Set height for the textarea */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Button styling */
+.profile-form button {
+  width: 100%; /* Full width button */
+  padding: 12px; /* Button padding */
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Button hover effect */
+.profile-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Profile picture preview */
+.profile-picture-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Profile picture styling */
+.profile-picture {
+  width: 150px; /* Set a fixed size for the profile picture */
+  height: 150px;
+  object-fit: cover; /* Ensure the image covers the container */
+  border-radius: 50%; /* Circular profile picture */
+  border: 2px solid #ccc; /* Optional border around the image */
+}
+
+/* Success and error message styling */
+.success-message {
+  color: green;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}

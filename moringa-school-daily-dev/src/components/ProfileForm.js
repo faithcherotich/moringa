@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirecting
 import './ProfileForm.css';
 
 const ProfileForm = ({ setProfile }) => {
@@ -11,7 +11,7 @@ const ProfileForm = ({ setProfile }) => {
     profilePicture: null,
   });
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // Initialize useNavigate for navigation
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,30 +28,19 @@ const ProfileForm = ({ setProfile }) => {
       reader.onloadend = () => {
         setFormData({
           ...formData,
-          profilePicture: reader.result, // Store base64 string instead of URL
+          profilePicture: reader.result, // Store base64 string
         });
       };
-      reader.readAsDataURL(file); // Read the file and convert it to base64
+      reader.readAsDataURL(file); // Convert file to base64
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     const newProfile = { ...formData, id: Date.now() };
-
-    try {
-      // Save the profile data to localStorage
-      localStorage.setItem('profile', JSON.stringify(newProfile));
-
-      // Update the parent component with the new profile
-      setProfile(newProfile);
-
-      // Navigate to the "For You" page
-      navigate('/foryou');
-    } catch (error) {
-      console.error('Error saving profile:', error);
-    }
+    localStorage.setItem('profile', JSON.stringify(newProfile)); // Save to localStorage
+    setProfile(newProfile); // Update profile in parent
+    navigate('/foryou');  // Redirect to the "For You" page after form submission
   };
 
   return (
@@ -114,13 +103,16 @@ const ProfileForm = ({ setProfile }) => {
         accept="image/*"
       />
 
-      <button type="submit">Create Profile</button>
+      {/* Create Profile Button */}
+      <button type="submit" className="create-profile-btn">
+        Create Profile
+      </button>
 
       {formData.profilePicture && (
         <div>
           <h3>Profile Preview:</h3>
           <img
-            src={formData.profilePicture} // Show the base64 string as the image
+            src={formData.profilePicture} // Show the base64 string as image preview
             alt="Profile Preview"
             className="profile-picture"
             style={{ width: '100px', height: '100px', objectFit: 'cover' }}
