@@ -133,3 +133,87 @@
 .user-info p strong {
   color: #333;
 }
+/* Button styles */
+.approve-content-btn {
+  background-color: #4CAF50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.approve-content-btn:hover {
+  background-color: #45a049;
+}
+
+/* Content Approval Section */
+.content-approval {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: hsl(83, 59%, 69%);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-approval h2 {
+  margin-bottom: 20px;
+}
+
+.content-approval ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.content-approval li {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgb(27, 214, 43);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content-approval button {
+  margin-right: 10px;
+}
+.flagged {
+  background-color: #fdd;
+  border-left: 5px solid red;
+}
+
+.flag-btn {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.flag-btn:hover {
+  background-color: #cc0000;
+}
+.content-approval {
+  padding: 20px;
+}
+
+.post-content-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.post-content-btn:hover {
+  background-color: #45a049;
+}
+
+.post-content-form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid hsl(0, 91%, 27%);
+  border-radius: 5px;
+  background-color: #d12466;
+}

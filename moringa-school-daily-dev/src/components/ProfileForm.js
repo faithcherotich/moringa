@@ -36,7 +36,7 @@ const ProfileForm = ({ setProfile }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  // Prevent the default form submission behavior
     const newProfile = { ...formData, id: Date.now() };
     localStorage.setItem('profile', JSON.stringify(newProfile)); // Save to localStorage
     setProfile(newProfile); // Update profile in parent

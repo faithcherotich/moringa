@@ -28,15 +28,31 @@
       "description": "A detailed introduction to DevOps tools and processes.",
       "category": "DevOps",
       "status": "pending",
-      "author": "John Doe"
+      "author": "John Doe",
+      "flagged": false
     },
     {
       "id": "2",
       "title": "Building Fullstack Applications",
       "description": "Learn how to build full-stack applications with React and Node.js.",
       "category": "Fullstack",
-      "status": "approved",
-      "author": "Jane Smith"
+      "status": "pending",
+      "author": "Jane Smith",
+      "flagged": false
+    },
+    {
+      "id": "5486",
+      "title": "react",
+      "description": "post",
+      "status": "pending",
+      "flagged": false
+    },
+    {
+      "id": "8e51",
+      "title": "devops",
+      "description": "backend",
+      "status": "pending",
+      "flagged": false
     }
   ],
   "profiles": [
@@ -76,7 +92,7 @@
       "profilePicture": "blob:http://localhost:3001/d8243abf-6a72-4cdf-b48e-1ecbe30e45a8"
     },
     {
-      "id": 1730965180072,
+      "id": "1730965180072",
       "name": "mike",
       "bio": "react",
       "expertise": "DevOps",

@@ -1,52 +1,79 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { postContent } from '../redux/contentSlice';
 
-function PostContentForm() {
-  const dispatch = useDispatch();
+const PostContentForm = ({ onContentPosted }) => {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [description, setDescription] = useState('');
+  const [status, setStatus] = useState('pending'); // Default status to 'pending'
 
-  const handlePostContent = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     const newContent = {
       title,
-      body,
-      categoryId,
-      status: 'pending',
-      likes: 0,
-      comments: [],
+      description,
+      status,
       flagged: false,
     };
-    dispatch(postContent(newContent));
+
+    // Send POST request to the json-server
+    fetch('http://localhost:5000/content', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newContent),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('New content posted:', data);
+        onContentPosted(data); // Callback to update the parent component (ContentApproval)
+      })
+      .catch((error) => {
+        console.error('Error posting content:', error);
+      });
+
+    // Clear the form fields after submission
     setTitle('');
-    setBody('');
-    setCategoryId('');
+    setDescription('');
+    setStatus('pending');
   };
 
   return (
-    <div>
+    <div className="post-content-form">
       <h2>Post New Content</h2>
-      <input 
-        type="text" 
-        placeholder="Title" 
-        value={title} 
-        onChange={(e) => setTitle(e.target.value)} 
-      />
-      <textarea 
-        placeholder="Content body" 
-        value={body} 
-        onChange={(e) => setBody(e.target.value)} 
-      />
-      <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
-        <option value="">Select Category</option>
-        <option value="1">DevOps</option>
-        <option value="2">Fullstack</option>
-        <option value="3">Front-End</option>
-      </select>
-      <button onClick={handlePostContent}>Post</button>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Title:</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Description:</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Status:</label>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <button type="submit">Post Content</button>
+      </form>
     </div>
   );
-}
+};
 
 export default PostContentForm;

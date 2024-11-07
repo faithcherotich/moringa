@@ -4,26 +4,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faBookmark, faUser } from '@fortawesome/free-regular-svg-icons';
 import ProfileIcon from './ProfileIcon'; // Assuming you already have a ProfileIcon component
 import './Header.css';  // Import the CSS for styling
+import ContentApproval from './ContentApproval';  // Import the ContentApproval component
 
 const Header = ({ toggleProfileForm }) => {
   const [isUserInfoVisible, setUserInfoVisible] = useState(false); // State to toggle user info visibility
   const [userInfo, setUserInfo] = useState(null); // State to store user data
+  const [loading, setLoading] = useState(true); // Loading state for fetching user info
+  const [isContentApprovalVisible, setContentApprovalVisible] = useState(false); // State to toggle content approval visibility
 
   // Fetch user data when the component mounts
   useEffect(() => {
-    // Fetch the user data from db.json
-    fetch('http://localhost:5000/techwriter')  // Assuming your db.json is served at the root of your project
+    fetch('http://localhost:5000/techwriter')
       .then((response) => response.json())
       .then((data) => {
-        setUserInfo(data.techWriter); // Set the user data to state
+        setUserInfo(data.techWriter);
+        setLoading(false); // Set loading to false once data is fetched
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
+        setLoading(false); // Set loading to false if there was an error
       });
   }, []);
 
   const toggleUserInfo = () => {
     setUserInfoVisible(!isUserInfoVisible); // Toggle the visibility of user information
+  };
+
+  // Function to toggle content approval section visibility
+  const toggleContentApproval = () => {
+    setContentApprovalVisible(!isContentApprovalVisible); // Toggle the visibility of content approval
   };
 
   return (
@@ -52,13 +61,22 @@ const Header = ({ toggleProfileForm }) => {
         <ProfileIcon onClick={toggleUserInfo} />
 
         {/* Button to open Profile Form */}
-        <button className="create-profile-btn" onClick={toggleProfileForm}>
-          Create Profile
+        <Link to="/create-profile">
+          <button className="create-profile-btn">
+            Create Profile
+          </button>
+        </Link>
+
+        {/* Button to open Content Approval */}
+        <button className="approve-content-btn" onClick={toggleContentApproval}>
+          Approve Content
         </button>
       </div>
 
       {/* Conditionally Render User Info */}
-      {isUserInfoVisible && userInfo && (
+      {loading && <p>Loading user info...</p>} {/* Show loading message */}
+      
+      {isUserInfoVisible && !loading && userInfo && (
         <div className="user-info">
           <img
             src={userInfo.profilePicture} // Show the profile picture
@@ -68,8 +86,12 @@ const Header = ({ toggleProfileForm }) => {
           />
           <p><strong>Name:</strong> {userInfo.name}</p>
           <p><strong>Email:</strong> {userInfo.email}</p>
+          {/* You can add more fields here */}
         </div>
       )}
+
+      {/* Conditionally Render Content Approval Section */}
+      {isContentApprovalVisible && <ContentApproval />}
     </header>
   );
 };
