@@ -1,0 +1,87 @@
+{
+  "techwriter": [
+    {
+      "id": "1",
+      "name": "joe",
+      "email": "joe@example.com",
+      "profile": "Tech writer specializing in DevOps."
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "DevOps"
+    },
+    {
+      "id": "2",
+      "name": "Fullstack"
+    },
+    {
+      "id": "3",
+      "name": "Front-End"
+    }
+  ],
+  "content": [
+    {
+      "id": "1",
+      "title": "Introduction to DevOps",
+      "description": "A detailed introduction to DevOps tools and processes.",
+      "category": "DevOps",
+      "status": "pending",
+      "author": "John Doe"
+    },
+    {
+      "id": "2",
+      "title": "Building Fullstack Applications",
+      "description": "Learn how to build full-stack applications with React and Node.js.",
+      "category": "Fullstack",
+      "status": "approved",
+      "author": "Jane Smith"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "8a87",
+      "name": "faith cherotich",
+      "bio": "tm",
+      "expertise": "DevOps"
+    },
+    {
+      "id": "1730960291537",
+      "name": "dd",
+      "bio": "J",
+      "expertise": "DevOps",
+      "profilePicture": "blob:http://localhost:3001/5eff4257-8897-4a79-bfee-ed1135c3e262"
+    },
+    {
+      "id": "1730960727829",
+      "name": "cherotich Faith",
+      "bio": "m",
+      "expertise": "DevOps",
+      "profilePicture": "blob:http://localhost:3001/79d1df12-ec52-4165-a927-8d6e5be616cf"
+    },
+    {
+      "id": "1730961437371",
+      "name": "john",
+      "bio": "s",
+      "expertise": "DevOps",
+      "profilePicture": "blob:http://localhost:3001/378dacef-7a44-43f3-9ff7-9aeda31bbf07"
+    },
+    {
+      "id": "1730961714927",
+      "name": "kate",
+      "bio": "KATE",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3001/d8243abf-6a72-4cdf-b48e-1ecbe30e45a8"
+    },
+    {
+      "id": 1730965180072,
+      "name": "mike",
+      "bio": "react",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3001/647908ab-8b62-437e-bcd3-5debe848c3c0"
+    }
+  ]
+}

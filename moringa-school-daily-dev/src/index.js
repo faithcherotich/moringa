@@ -1,17 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'; // React 18 root API
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux'; // Import the Redux Provider
+import  store  from './redux/store'; // Correct path to store (update if needed)
 import reportWebVitals from './reportWebVitals';
 
+// Create root with React 18's new root API
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render the app with the Redux store provided to the entire app
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>  {/* Provide the Redux store to the App */}
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Optional: Track app performance
 reportWebVitals();

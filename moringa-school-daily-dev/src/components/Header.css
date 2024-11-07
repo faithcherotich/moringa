@@ -1,0 +1,103 @@
+
+/* General header styling */
+.header {
+    display: flex;
+    justify-content: space-between;  /* Distribute space between elements */
+    align-items: center;
+    background-color:#D2F7C6;  /* Greenish background color for the header */
+    padding: 20px;
+    position: relative;  /* For absolute positioning of the bell and user icons */
+    color: white;
+  }
+  
+  /* Logo container on the left */
+  .logo-container {
+    flex: 1;
+  }
+  
+  /* Styling for the logo */
+  .logo {
+    max-width: 100%;
+    height: auto;
+    width: 120px;  /* Adjust width as needed */
+  }
+  
+  /* Icons container for bell, bookmark, and user icon */
+  .icons-container {
+    position: absolute;
+    right: 20px;  /* Position the icons 20px from the right edge */
+    top: 20px;  /* Align vertically with the navbar */
+    display: flex;
+    gap: 15px;  /* Space between the icons */
+  }
+  
+  /* Individual icon styling (bell, bookmark, user, etc.) */
+  .bell-icon,
+  .bookmark-icon,
+  .user-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Navbar styling (greenish background) */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#D2F7C6;  /* Greenish background for the navbar */
+    padding: 10px;
+    width: 100%;
+  }
+  
+  /* Styling for the navbar links */
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;  /* Add spacing between items */
+  }
+  
+  .navbar li {
+    display: inline-block;
+  }
+  
+  .navbar li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .navbar li a:hover {
+    color: #ff6347;  /* Change color on hover */
+  }
+  
+  /* Hamburger icon for mobile */
+  .hamburger {
+    display: none;
+  }
+  
+  /* Mobile responsive design */
+  @media (max-width: 768px) {
+    .navbar {
+      display: none; /* Hide the navbar on small screens */
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .navbar.active {
+      display: flex; /* Show navbar when active */
+    }
+  
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .hamburger .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: white;
+    }
+  }

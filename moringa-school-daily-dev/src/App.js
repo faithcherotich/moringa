@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';  // Import the Header (Navbar)
+import ProfileForm from './components/ProfileForm';  // Import ProfileForm component
+import ProfileDisplay from './components/ProfileDisplay';  // Import ProfileDisplay component
+import DevOps from './components/DevOps';  // Placeholder for 'DevOps' content
+import FrontEnd from './components/FrontEnd';  // Placeholder for 'Front-End' content
+import Fullstack from './components/Fullstack';  // Placeholder for 'Fullstack' content
 
 function App() {
+  const [profile, setProfile] = useState(null);
+
+  // Load the profile from localStorage on initial render
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('profile');
+    if (savedProfile) {
+      setProfile(JSON.parse(savedProfile));  // Parse the saved profile and set it
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* Include the Header at the top (Navbar) */}
+      <Header />
+
+      {/* Define Routes for different categories */}
+      <Routes>
+        {/* Conditional rendering for "For You" */}
+        <Route
+          path="/foryou"
+          element={profile ? <ProfileDisplay /> : <ProfileForm setProfile={setProfile} />}
+        />
+        <Route path="/devops" element={<DevOps />} />  {/* DevOps content */}
+        <Route path="/frontend" element={<FrontEnd />} />  {/* Front-End content */}
+        <Route path="/fullstack" element={<Fullstack />} />  {/* Fullstack content */}
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,38 @@
+.profile-icon-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-icon {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .profile-details {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .profile-details p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
