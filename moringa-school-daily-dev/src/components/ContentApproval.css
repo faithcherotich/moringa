@@ -1,0 +1,165 @@
+/* Content Approval Container */
+.content-approval {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Button to toggle PostContentForm visibility */
+  .post-content-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .post-content-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Content List Styles */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  li.flagged {
+    background-color: #ffebee; /* Light red background for flagged content */
+    border: 2px solid #f44336; /* Red border for flagged items */
+  }
+  
+  li h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+  }
+  
+  li p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  li .status {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+  }
+  
+  /* Action Buttons */
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  button.approve-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  button.approve-btn:hover:not(:disabled) {
+    background-color: #45a049;
+  }
+  
+  button.reject-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  button.reject-btn:hover:not(:disabled) {
+    background-color: #e53935;
+  }
+  
+  button.flag-btn {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  button.flag-btn:hover:not(:disabled) {
+    background-color: #fb8c00;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Post Content Form Container */
+  .post-content-form-container {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-content-form-container h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Inputs */
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  /* Form Submit Button */
+  .submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }

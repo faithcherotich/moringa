@@ -29,7 +29,10 @@
       "category": "DevOps",
       "status": "pending",
       "author": "John Doe",
-      "flagged": false
+      "flagged": false,
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
     },
     {
       "id": "2",
@@ -38,35 +41,53 @@
       "category": "Fullstack",
       "status": "pending",
       "author": "Jane Smith",
-      "flagged": false
+      "flagged": false,
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
     },
     {
       "id": "5486",
-      "title": "react",
-      "description": "post",
+      "title": "React Basics",
+      "description": "A guide to get started with React.",
       "status": "pending",
-      "flagged": false
+      "flagged": false,
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
     },
     {
       "id": "8e51",
-      "title": "devops",
-      "description": "backend",
+      "title": "DevOps Best Practices",
+      "description": "Explore the best practices in DevOps.",
       "status": "pending",
-      "flagged": false
+      "flagged": false,
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
     },
     {
       "id": "8bfc",
-      "title": "python",
-      "description": "flask",
+      "title": "Python Flask Introduction",
+      "description": "Learn how to get started with Flask framework.",
       "status": "Approved",
-      "flagged": true
+      "flagged": true,
+      "likes": 5,
+      "dislikes": 2,
+      "comments": [
+        "Great content!",
+        "Very useful."
+      ]
     },
     {
-      "id": "8bfc",
-      "title": "python",
-      "description": "flask",
-      "status": "pending",
-      "flagged": false
+      "id": "37d7",
+      "title": "Python Django Overview",
+      "description": "An overview of Django framework for Python.",
+      "status": "Rejected",
+      "flagged": true,
+      "likes": 0,
+      "dislikes": 0,
+      "comments": []
     }
   ],
   "profiles": [
@@ -112,6 +133,51 @@
       "expertise": "DevOps",
       "category": "DevOps",
       "profilePicture": "blob:http://localhost:3001/647908ab-8b62-437e-bcd3-5debe848c3c0"
+    },
+    {
+      "id": "1731068342394",
+      "name": "JOE",
+      "bio": "software",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3000/00c82c66-b4ca-4941-84c2-5d39b30268d7"
+    },
+    {
+      "id": "1731069220080",
+      "name": "dd",
+      "bio": "dd",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3000/d38af9c3-ec5e-4234-97cf-cb06725f2337"
+    },
+    {
+      "id": "1731069963016",
+      "name": "llll",
+      "bio": "ygg",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3000/4171d1b9-772d-4e5b-9511-7a268d9a2428"
+    },
+    {
+      "id": "1731070324807",
+      "name": "o",
+      "bio": "o",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3000/f38f5c1c-d9e8-4505-9ac4-59ba96f51fb6"
+    },
+    {
+      "id": "1731071066150",
+      "name": "d",
+      "bio": "d",
+      "expertise": "DevOps",
+      "category": "DevOps",
+      "profilePicture": "blob:http://localhost:3000/eac286bc-3960-4143-9170-84b5cec09d60"
     }
-  ]
+  ],
+  "devOps": {
+    "title": "DevOps",
+    "imageUrl": "/devops.jpg",
+    "description": "This section will contain content related to DevOps best practices and trends."
+  }
 }

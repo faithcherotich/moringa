@@ -1,15 +1,16 @@
 
 .header {
   display: flex;
-  justify-content: space-between;  /* Distribute space between elements */
+  justify-content: space-between;  /* Distribute space between logo, navbar, and icons */
   align-items: center;
-  background-color: #D2F7C6;  /* Greenish background color for the header */
+  background-color: #D2F7C6;  /* Greenish background color */
   padding: 20px;
-  position: relative;  /* For positioning the icons and buttons */
+  position: relative;  /* Allows positioning of icons/buttons */
   color: white;
+  z-index: 0;  /* Ensure the header stays below the icons */
 }
 
-/* Logo container on the left */
+/* Logo Container */
 .logo-container {
   flex: 1;
 }
@@ -17,48 +18,101 @@
 .logo {
   max-width: 100%;
   height: auto;
-  width: 120px;  /* Adjust width as needed */
-
+  width: 120px;  /* Adjust the width as needed */
 }
 
-/* Navbar links */
+/* Navbar */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #D2F7C6; /* Greenish background for navbar */
-  padding: 10px;
+  padding: 10px 20px;
   width: 100%;
+  position: relative;  /* This ensures that the icons will be positioned relative to the navbar */
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 20px;  /* Add spacing between items */
+  gap: 25px;  /* Increased space between navbar items */
+  margin-right: 100px;  /* Create space for icons on the right */
 }
 
+/* For DevOps link */
+.navbar li:nth-child(2) a {
+  background-color: #f0f0f0;  /* Light background */
+}
+
+.navbar li:nth-child(2) a:hover {
+  background-color: #e0e0e0;  /* Slightly darker on hover */
+}
+
+/* For Front-End link */
+.navbar li:nth-child(3) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(3) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Fullstack link */
+.navbar li:nth-child(4) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(4) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Backend link */
+.navbar li:nth-child(5) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(5) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Cloud Computing link */
+.navbar li:nth-child(6) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(6) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Adjust the "For You" link position */
+.navbar li:first-child a {
+  margin-left: -120px;  /* Move the "For You" link closer to the logo */
+  padding-left: 10px;  /* Adjust padding to make it look better */
+}
+
+/* Navbar links */
 .navbar li a {
   color: black;
   text-decoration: none;
   font-size: 1.2rem;
+  padding: 8px 16px;  /* Padding for better spacing */
+  border-radius: 5px;
 }
 
 .navbar li a:hover {
-  color: #ff6347;  /* Change color on hover */
+  color: #ff6347;  /* Hover color for links */
+  background-color: #e0e0e0;
 }
 
-/* Icons container (bell, bookmark, user icon) */
+/* Icons Container (bell, bookmark, user icon) */
 .icons-container {
   display: flex;
   align-items: center;
-  gap: 15px;  /* Space between the icons */
-  z-index: 10;  /* Ensure icons are on top */
-  position: absolute; /* Keep icons on the top-right */
-  right: 20px;
-  top: 20px;  /* Adjust if necessary */
+  gap: 15px;  /* Space between icons */
+  position: absolute;
+  right: 20px;  /* Adjust the right value to place the icons at the top right of the navbar */
+  top: 10px;  /* Move the icons slightly down if needed */
 }
 
-/* Individual icon styling */
 .bell-icon,
 .bookmark-icon,
 .user-icon {
@@ -67,9 +121,9 @@
   cursor: pointer;
 }
 
-/* Profile button styling */
+/* Profile Button Styling */
 .create-profile-btn {
-  background-color: #4CAF50;  /* Green */
+  background-color: #4CAF50;  /* Green background */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -77,30 +131,29 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
-  z-index: 10;  /* Ensure button is clickable */
-  position: relative;
-  margin-top: 30px;  /* Space between navbar and button */
+  margin-top: 30px;  /* Space from navbar */
   margin-left: auto;
-  margin-right: auto;  /* Center the button horizontally */
+  margin-right: auto;  /* Center horizontally */
 }
 
-/* Button hover effect */
 .create-profile-btn:hover {
   background-color: #45a049;  /* Darker green on hover */
 }
 
-/* Mobile responsive design */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
+  /* Navbar links */
   .navbar {
-    display: none; /* Hide the navbar on small screens */
+    display: none;  /* Hide navbar on small screens */
     flex-direction: column;
     gap: 10px;
   }
 
   .navbar.active {
-    display: flex; /* Show navbar when active */
+    display: flex;  /* Show navbar when active (for mobile hamburger menu) */
   }
 
+  /* Hamburger menu icon */
   .hamburger {
     display: block;
     cursor: pointer;
@@ -113,107 +166,4 @@
     margin: 5px auto;
     background-color: white;
   }
-}
-.user-info {
-  position: absolute;
-  top: 80px; /* Position below the header */
-  right: 20px; /* Align to the right side */
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  font-size: 14px;
-}
-
-.user-info p {
-  margin: 5px 0;
-}
-
-.user-info p strong {
-  color: #333;
-}
-/* Button styles */
-.approve-content-btn {
-  background-color: #4CAF50;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 20px;
-}
-
-.approve-content-btn:hover {
-  background-color: #45a049;
-}
-
-/* Content Approval Section */
-.content-approval {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: hsl(83, 59%, 69%);
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.content-approval h2 {
-  margin-bottom: 20px;
-}
-
-.content-approval ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.content-approval li {
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: rgb(27, 214, 43);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.content-approval button {
-  margin-right: 10px;
-}
-.flagged {
-  background-color: #fdd;
-  border-left: 5px solid red;
-}
-
-.flag-btn {
-  background-color: #ff0000;
-  color: white;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.flag-btn:hover {
-  background-color: #cc0000;
-}
-.content-approval {
-  padding: 20px;
-}
-
-.post-content-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.post-content-btn:hover {
-  background-color: #45a049;
-}
-
-.post-content-form {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid hsl(0, 91%, 27%);
-  border-radius: 5px;
-  background-color: #d12466;
 }

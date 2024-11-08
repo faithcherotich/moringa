@@ -1,33 +1,34 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createProfile, fetchProfile } from '../redux/profileSlice';  // Import actions
+import { setProfile } from '../redux/profileSlice'; // Import setProfile action
 import ProfileForm from './ProfileForm';
 import ProfileDisplay from './ProfileDisplay';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
-  const { profile, loading, error } = useSelector((state) => state.profile);
+  const { profile } = useSelector((state) => state.profile);
 
-  // Effect to check if a profile exists, and if not, dispatch the fetch or create action
-  useEffect(() => {
-    if (!profile) {
-      // Simulate fetching the profile if it exists
-      // Example: dispatch(fetchProfile()); // Uncomment this if you have a fetchProfile action
+  // If there's no profile, show the profile form for creation
+  const renderContent = () => {
+    if (profile) {
+      // If profile exists in Redux state, display it
+      return <ProfileDisplay profile={profile} />;
+    } else {
+      // If no profile exists, show the form to create a new profile
+      return (
+        <ProfileForm
+          setProfile={(newProfile) => {
+            dispatch(setProfile(newProfile)); // Update profile in Redux store
+            localStorage.setItem('profile', JSON.stringify(newProfile)); // Optionally store in localStorage
+          }}
+        />
+      );
     }
-  }, [dispatch, profile]);
+  };
 
   return (
     <div className="profile-page">
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-
-      {profile ? (
-        // If profile exists, display it
-        <ProfileDisplay profile={profile} />
-      ) : (
-        // If no profile, show the ProfileForm
-        <ProfileForm dispatch={dispatch} />
-      )}
+      {renderContent()} {/* Render either profile display or profile form */}
     </div>
   );
 };

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';  // Import Link for routing
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faBookmark, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faBell, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import ProfileIcon from './ProfileIcon'; // Assuming you already have a ProfileIcon component
 import './Header.css';  // Import the CSS for styling
-import ContentApproval from './ContentApproval';  // Import the ContentApproval component
 
 const Header = ({ toggleProfileForm }) => {
   const [isUserInfoVisible, setUserInfoVisible] = useState(false); // State to toggle user info visibility
   const [userInfo, setUserInfo] = useState(null); // State to store user data
   const [loading, setLoading] = useState(true); // Loading state for fetching user info
-  const [isContentApprovalVisible, setContentApprovalVisible] = useState(false); // State to toggle content approval visibility
 
   // Fetch user data when the component mounts
   useEffect(() => {
@@ -30,11 +28,6 @@ const Header = ({ toggleProfileForm }) => {
     setUserInfoVisible(!isUserInfoVisible); // Toggle the visibility of user information
   };
 
-  // Function to toggle content approval section visibility
-  const toggleContentApproval = () => {
-    setContentApprovalVisible(!isContentApprovalVisible); // Toggle the visibility of content approval
-  };
-
   return (
     <header className="header">
       {/* Logo on the left */}
@@ -49,6 +42,8 @@ const Header = ({ toggleProfileForm }) => {
           <li><Link to="/devops">DevOps</Link></li>
           <li><Link to="/frontend">Front-End</Link></li>
           <li><Link to="/fullstack">Fullstack</Link></li>
+          <li><Link to="/backend">Backend</Link></li>
+          <li><Link to="/cloudcomputing">Cloud Computing</Link></li>
         </ul>
       </nav>
 
@@ -67,10 +62,12 @@ const Header = ({ toggleProfileForm }) => {
           </button>
         </Link>
 
-        {/* Button to open Content Approval */}
-        <button className="approve-content-btn" onClick={toggleContentApproval}>
-          Approve Content
-        </button>
+        {/* Button to navigate to Content Approval page */}
+        <Link to="/approve-content">
+          <button className="approve-content-btn">
+            Approve Content
+          </button>
+        </Link>
       </div>
 
       {/* Conditionally Render User Info */}
@@ -86,12 +83,8 @@ const Header = ({ toggleProfileForm }) => {
           />
           <p><strong>Name:</strong> {userInfo.name}</p>
           <p><strong>Email:</strong> {userInfo.email}</p>
-          {/* You can add more fields here */}
         </div>
       )}
-
-      {/* Conditionally Render Content Approval Section */}
-      {isContentApprovalVisible && <ContentApproval />}
     </header>
   );
 };

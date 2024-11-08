@@ -6,13 +6,15 @@ const ContentApproval = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false); // State to control visibility of the form
+  const [editingContent, setEditingContent] = useState(null); // State to hold content being edited
+  const [editForm, setEditForm] = useState({ title: '', description: '' }); // State for editing form inputs
 
   // Fetch content data from the mock backend
   useEffect(() => {
     fetch('http://localhost:5000/content')
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.content || []); // Ensure content is an array
+        setContent(data); // No need to access `data.content` since it's returned as an array
         setLoading(false);
       })
       .catch((error) => {
@@ -123,6 +125,38 @@ const ContentApproval = () => {
       });
   };
 
+  // Handle Edit Content Button Click
+  const handleEdit = (contentItem) => {
+    setEditingContent(contentItem);
+    setEditForm({ title: contentItem.title, description: contentItem.description });
+  };
+
+  // Handle saving content edits
+  const handleSaveEdit = (id) => {
+    const updatedContent = { ...editingContent, ...editForm };
+
+    // Update content in the state and backend
+    setContent((prevContent) =>
+      prevContent.map((item) => (item.id === id ? updatedContent : item))
+    );
+
+    fetch(`http://localhost:5000/content/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedContent),
+    })
+      .then((response) => response.json())
+      .then((updatedContent) => {
+        console.log('Content updated:', updatedContent);
+        setEditingContent(null); // Clear editing state
+      })
+      .catch((error) => {
+        console.error('Error saving edited content:', error);
+      });
+  };
+
   // Render content list
   const renderContent = () => {
     if (loading) {
@@ -145,15 +179,44 @@ const ContentApproval = () => {
             <p>{item.description}</p>
             <p>Status: {item.status}</p>
 
+            {/* Edit Button */}
+            <button onClick={() => handleEdit(item)}>Edit</button>
+
             {/* Action Buttons */}
-            <button onClick={() => handleApprove(item.id)}>Approve</button>
-            <button onClick={() => handleReject(item.id)}>Reject</button>
-            <button className="flag-btn" onClick={() => handleFlag(item.id)}>
+            <button onClick={() => handleApprove(item.id)} disabled={item.status === 'Approved'}>
+              Approve
+            </button>
+            <button onClick={() => handleReject(item.id)} disabled={item.status === 'Rejected'}>
+              Reject
+            </button>
+            <button className="flag-btn" onClick={() => handleFlag(item.id)} disabled={item.flagged}>
               Flag as Violating Rules
             </button>
           </li>
         ))}
       </ul>
+    );
+  };
+
+  // Edit Form for content
+  const renderEditForm = () => {
+    if (!editingContent) return null;
+
+    return (
+      <div className="edit-form">
+        <h3>Edit Content</h3>
+        <input
+          type="text"
+          value={editForm.title}
+          onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+        />
+        <textarea
+          value={editForm.description}
+          onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+        />
+        <button onClick={() => handleSaveEdit(editingContent.id)}>Save</button>
+        <button onClick={() => setEditingContent(null)}>Cancel</button>
+      </div>
     );
   };
 
@@ -168,6 +231,9 @@ const ContentApproval = () => {
 
       {/* Conditionally render the PostContentForm based on showForm state */}
       {showForm && <PostContentForm onContentPosted={handleNewContentPosted} />}
+
+      {/* Render the edit form if content is being edited */}
+      {renderEditForm()}
 
       {/* Render the list of content */}
       {renderContent()}
